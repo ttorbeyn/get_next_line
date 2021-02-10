@@ -28,7 +28,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c779f0e9-7c86-4a50-af52-5c0cfaf74b29" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/a.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/get_next_line.c" beforeDir="false" afterPath="$PROJECT_DIR$/get_next_line.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/get_next_line.h" beforeDir="false" afterPath="$PROJECT_DIR$/get_next_line.h" afterDir="false" />
     </list>
@@ -72,7 +73,7 @@
       <workItem from="1611331285813" duration="319000" />
       <workItem from="1612783557159" duration="3162000" />
       <workItem from="1612800203027" duration="69000" />
-      <workItem from="1612951695675" duration="1956000" />
+      <workItem from="1612951695675" duration="7993000" />
     </task>
     <servers />
   </component>
@@ -100,5 +101,9 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="201" y="524" key="#com.intellij.fileTypes.FileTypeChooser/0.23.2560.1417@0.23.2560.1417" timestamp="1612789721454" />
+    <state x="218" y="341" width="838" height="1032" key="search.everywhere.popup" timestamp="1612957962743">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="218" y="341" width="838" height="1032" key="search.everywhere.popup/0.23.2560.1417@0.23.2560.1417" timestamp="1612957962743" />
   </component>
 </project>

@@ -20,7 +20,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-# define BUF_SIZE 10
+# define BUF_SIZE 5
 
 #endif
 
