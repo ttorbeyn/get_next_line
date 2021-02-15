@@ -87,38 +87,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	new[i] = '\0';
 	return (new);
 }
-
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
-{
-	size_t i;
-
-	i = 0;
-	while (i < n)
-	{
-		if (((unsigned char *) src)[i] != ((unsigned char) c))
-		{
-			((unsigned char *) dst)[i] = ((unsigned char *) src)[i];
-			i++;
-		} else
-		{
-			((unsigned char *) dst)[i] = ((unsigned char *) src)[i];
-			return (&dst[i + 1]);
-		}
-	}
-	return (NULL);
-}
-
-void	*ft_memcpy(void *dst, const void *src, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	if ((!dst) && (!src))
-		return (dst);
-	while (i < n)
-	{
-		((unsigned char*)dst)[i] = ((unsigned char*)src)[i];
-		i++;
-	}
-	return (dst);
-}
