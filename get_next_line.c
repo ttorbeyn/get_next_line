@@ -30,7 +30,7 @@
 	a = 0;
 	b = 0;
 
-	if (!(*line = malloc(sizeof(char) * (BUF_SIZE + 1))))
+	if (!(*line = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
 	while (s > 1 && save[b] != '\n')
 	{
@@ -41,9 +41,9 @@
 	//printf("z	:	%d\n", z);
 	if (!(save = malloc(sizeof(char) * (100))))
 		return (-1);
-	if (!(buffer = malloc(sizeof(char) * (BUF_SIZE + 1))))
+	if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
-	ret = read(fd, buffer, BUF_SIZE);
+	ret = read(fd, buffer, BUFFER_SIZE);
 	while (ret)
 	{
 		i = 0;
@@ -67,7 +67,7 @@
 			break;
 		}
 		else
-			ret = read(fd, buffer, BUF_SIZE);
+			ret = read(fd, buffer, BUFFER_SIZE);
 	}
 	line[x][y] = '\0';
 	return (a);
@@ -80,9 +80,9 @@ int	line_len(int fd)
 	int i;
 	char *buffer;
 
-	if (!(buffer = malloc(sizeof(char) * (BUF_SIZE + 1))))
+	if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
-	x = read(fd, buffer, BUF_SIZE);
+	x = read(fd, buffer, BUFFER_SIZE);
 	i = 0;
 	while (x && buffer[i] != '\n')
 	{
@@ -94,7 +94,7 @@ int	line_len(int fd)
 		if (buffer[i] == '\n')
 			return (i);
 		else
-			x = read(fd, buffer, BUF_SIZE);
+			x = read(fd, buffer, BUFFER_SIZE);
 	}
 	return (i);
 }
@@ -134,7 +134,7 @@ int		get_next_line(int fd, char **line)
 	x = 0;
 	a = 0;
 	b = 0;
-	if (!(*line = malloc(sizeof(char) * (BUF_SIZE + 1))))
+	if (!(*line = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
 	y = 0;
 	if (s)
@@ -152,10 +152,10 @@ int		get_next_line(int fd, char **line)
 	//printf("y	:	%d\n", y);
 	if (!(save = malloc(sizeof(char) * (1000))))
 		return (-1);
-	if (!(buffer = malloc(sizeof(char) * (BUF_SIZE + 2))))
+	if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 2))))
 		return (-1);
 	//printf("save2	:	%s\n", save);
-	ret = read(fd, buffer, BUF_SIZE);
+	ret = read(fd, buffer, BUFFER_SIZE);
 	while (ret)
 	{
 		//printf("bufferA	:	%s\n", buffer2);
@@ -185,7 +185,7 @@ int		get_next_line(int fd, char **line)
 			break;
 		}
 		else
-			ret = read(fd, buffer, BUF_SIZE);
+			ret = read(fd, buffer, BUFFER_SIZE);
 	}
 	line[x][y] = '\0';
 	return (a);
@@ -210,7 +210,7 @@ int		get_next_line(int fd, char **line)
 	a = 0;
 	z = 0;
 
-	if (!(buffer = malloc(sizeof(char) * (BUF_SIZE + 1))))
+	if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
 	if (!(*line = malloc(sizeof(char) * (100))))
 		return (-1);
@@ -220,9 +220,9 @@ int		get_next_line(int fd, char **line)
 		j--;
 	}
 	printf("save	:	%s\n", save);
-	if (!(save = malloc(sizeof(char) * (BUF_SIZE + 1))))
+	if (!(save = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
-	ret = read(fd, buffer, BUF_SIZE);
+	ret = read(fd, buffer, BUFFER_SIZE);
 	j = 0;
 	while (buffer[i])
 	{
@@ -245,31 +245,62 @@ int		get_next_line(int fd, char **line)
 			a = 1;
 		}
 		else
-			read(fd, buffer, BUF_SIZE);
+			read(fd, buffer, BUFFER_SIZE);
 	}
 	line[x][y] = '\0';
 	return (a);
 }
 */
 
+int		check_if(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] && str[i] != '\n')
+		i++;
+	if (str[i] == '\n')
+		return (i);
+	return (0);
+}
+
 int		get_next_line(int fd, char **line)
 {
-	static char	*new;
+	static char	*new = 0;
 	char		*buffer;
-	int			ret;
-	int i;
-	int x;
-	int y;
+	int ret;
 
-	if (!(buffer = malloc(sizeof(char) * (BUF_SIZE + 1))))
+	if (!(*line = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
-	read(fd, buffer, BUF_SIZE);
-	new = ft_strdup(buffer);
-	i = 0;
-	x = 0;
-	y = 0;
-	while (new[i] && new[i] != '\n')
-		line[x][y++] = new[i++];
+	if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+		return (-1);
+	ret = read(fd, buffer, BUFFER_SIZE);
+	printf("buffer	:	%s\n", buffer);
+	printf("new	:	%s\n", new);
+	if (new && check_if(new) == 0)
+		new = ft_strjoin(new, buffer);
+	else if (!new)
+		new = ft_strdup(buffer);
+	printf("new2	:	%s\n", new);
+	while (new)
+	{
+		if (check_if(new))
+		{
+			*line = ft_strndup(new, check_if(new));
+			new = &new[check_if(new) + 1];
+			printf("Coucou\n");
+			return (1);
+		}
+		else
+		{
+			if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+				return (-1);
+			ret = read(fd, buffer, BUFFER_SIZE);
+			new = ft_strjoin(new, buffer);
+		}
+		free(buffer);
+	}
+	return (0);
 }
 
 
@@ -282,7 +313,7 @@ int main()
 
 	if (!(line = malloc(sizeof(char *) * (100))))
 		return (0);
-	if (!(*line = malloc(sizeof(chgit ar) * (100))))
+	if (!(*line = malloc(sizeof(char) * (100))))
 		return (0);
 	fd = open("test", O_RDONLY);
 	if (fd == -1)
@@ -291,7 +322,7 @@ int main()
 		return (1);
 	}
 	a = 0;
-	while (a < 5)
+	while (a < 4)
 	{
 		ret = get_next_line(fd, line);
 		printf("%d -- |%s|\n", ret, *line);

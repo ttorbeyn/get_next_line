@@ -20,11 +20,12 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-# define BUF_SIZE 20
-
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s1);
 char	*ft_strjoin(char const *s1, char const *s2);
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
+char	*ft_strndup(const char *s1, int n);
 int		get_next_line(int fd, char **line);
 
 #endif
