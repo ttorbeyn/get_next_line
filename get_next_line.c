@@ -28,17 +28,17 @@ int		get_next_line(int fd, char **line)
 {
 	static char	*new;
 	char		*buffer;
-	int 		ret;
 	int			i;
 
 	if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE))))
 		return (-1);
-	ret = read(fd, buffer, BUFFER_SIZE);
+	read(fd, buffer, BUFFER_SIZE);
 	if (new && check_if(new) == 0)
 		new = ft_strjoin(new, buffer);
 	else if (!new)
 		new = ft_strdup(buffer);
 	i = 0;
+	free(buffer);
 	while (1)
 	{
 		if (new[i] == '\n')
@@ -46,38 +46,36 @@ int		get_next_line(int fd, char **line)
 			*line = ft_strndup(new, i);
 			i++;
 			new = ft_strdup(&new[i]);
-
 			return (1);
 		}
 		else if (new[i] == '\0')
 		{
 			if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 				return (-1);
-			ret = read(fd, buffer, BUFFER_SIZE);
+			read(fd, buffer, BUFFER_SIZE);
 			new = ft_strjoin(new, buffer);
-			break;
+			free(buffer);
+			break ;
 		}
 		i++;
-		//free(buffer);
 	}
 	return (0);
 }
 
-
-int main()
+int		main(void)
 {
-	int fd;
-	int ret;
-	char *line;
+	int		fd;
+	int		ret;
+	char	*line;
 
 	fd = open("test", O_RDONLY);
-	while(1)
+	while (1)
 	{
 		ret = get_next_line(fd, &line);
 		printf("%d -- |%s|\n", ret, line);
 		free(line);
 		if (ret == 0)
-			break;
+			break ;
 	}
 	return (0);
 }
