@@ -24,6 +24,21 @@ int		check_if(char *str)
 	return (0);
 }
 
+static char *line_cat(char *new, int fd)
+{
+	int ret;
+	char *buffer;
+
+	if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+		return (NULL);
+	ret = read(fd, buffer, BUFFER_SIZE);
+	buffer[ret] = '\0';
+	new = ft_strjoin(new, buffer);
+	//free(buffer);
+	return (new);
+}
+
+
 int		get_next_line(int fd, char **line)
 {
 	static char	*new;
@@ -46,26 +61,22 @@ int		get_next_line(int fd, char **line)
 	i = 0;
 	while (1)
 	{
+		if (new[i] == EOF)
+			break ;
 		if (new[i] == '\n')
 		{
-			//new[i] = '\0';
 			*line = ft_strndup(new, i);
-			i++;
-			new = ft_strdup(&new[i]);
+			//i++;
+			new = ft_strdup(&new[i + 1]);
 			return (1);
 		}
 		else if (new[i] == '\0')
 		{
-			if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
-				return (-1);
-			ret = read(fd, buffer, BUFFER_SIZE);
-			buffer[ret] = '\0';
-			new = ft_strjoin(new, buffer);
-			free(buffer);
+			new = line_cat(new, fd);
+			i--;
 		}
-		if (new[i] == EOF)
-			break ;
 		i++;
+
 	}
 	free(new);
 	return (0);
@@ -77,7 +88,7 @@ int		main(void)
 	int		ret;
 	char	*line;
 
-	fd = open("test", O_RDONLY);
+	fd = open("alphabet", O_RDONLY);
 	while (1)
 	{
 		ret = get_next_line(fd, &line);
