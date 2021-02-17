@@ -43,12 +43,15 @@ char	*ft_strdup(const char *s1)
 
 char	*ft_strndup(const char *s1, int n)
 {
-	size_t	len;
-	size_t	i;
+	int	len;
+	int	i;
 	char	*new;
 
 	i = 0;
+
 	len = ft_strlen(s1);
+	if (len > n)
+		len = n;
 	if (!(new = malloc(sizeof(char) * (len + 1))))
 		return (NULL);
 	while (s1[i] && n)

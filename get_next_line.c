@@ -24,60 +24,65 @@ int		check_if(char *str)
 	return (0);
 }
 
-static char *line_cat(char *new, int fd)
+static char *ft_read(int fd)
 {
-	int ret;
-	char *buffer;
+	char	*buffer;
+	int		ret;
 
 	if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+		return (0);
+	if ((ret = read(fd, buffer, BUFFER_SIZE)) < 0)
 		return (NULL);
-	ret = read(fd, buffer, BUFFER_SIZE);
 	buffer[ret] = '\0';
-	new = ft_strjoin(new, buffer);
-	//free(buffer);
-	return (new);
+	return (buffer);
 }
 
+static char *line_cat(char *new, int fd)
+{
+	char *buffer;
+
+	buffer = ft_read(fd);
+	new = ft_strjoin(new, buffer);
+	free(buffer);
+	return (new);
+}
 
 int		get_next_line(int fd, char **line)
 {
 	static char	*new;
 	char		*buffer;
 	int			i;
-	int			ret;
 
-	if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
-		return (-1);
-	ret = read(fd, buffer, BUFFER_SIZE);
-	buffer[ret] = '\0';
-	//on regarde si new existe et s'il contient pas de \n
-	if (new && check_if(new) == 0)
-		new = ft_strjoin(new, buffer);
-	//Si new n'existe pas on y met le buffer
-	else if (!new)
-		new = ft_strdup(buffer);
-	//printf("new	:	%s\n", new);
-	free(buffer);
-	i = 0;
-	while (1)
+	if ((new && check_if(new) == 0) || !new)
 	{
-		if (new[i] == EOF)
-			break ;
+		buffer = ft_read(fd);
+		if (new && check_if(new) == 0)
+			new = ft_strjoin(new, buffer);
+		else
+			new = ft_strdup(buffer);
+		free(buffer);
+	}
+	i = 0;
+
+	while (ft_strlen(new) > 0)
+	{
+		//printf("len new	:	%lu\n", ft_strlen(new));
 		if (new[i] == '\n')
 		{
+			//new[i] = '\0';
 			*line = ft_strndup(new, i);
-			//i++;
 			new = ft_strdup(&new[i + 1]);
+			//printf("new	:	%s\n", new);
 			return (1);
 		}
-		else if (new[i] == '\0')
+		if (new[i] == '\0' && ft_strlen(new) > 1)
 		{
 			new = line_cat(new, fd);
 			i--;
 		}
 		i++;
-
 	}
+	printf("new	:	%s\n", new);
 	free(new);
 	return (0);
 }
