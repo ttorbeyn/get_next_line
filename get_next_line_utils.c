@@ -38,31 +38,10 @@ char	*ft_strdup(const char *s1)
 		i++;
 	}
 	new[i] = '\0';
+	//free((void *)s1);
 	return (new);
 }
 
-char	*ft_strndup(const char *s1, int n)
-{
-	int	len;
-	int	i;
-	char	*new;
-
-	i = 0;
-
-	len = ft_strlen(s1);
-	if (len > n)
-		len = n;
-	if (!(new = malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	while (s1[i] && n)
-	{
-		new[i] = s1[i];
-		i++;
-		n--;
-	}
-	new[i] = '\0';
-	return (new);
-}
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -88,5 +67,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		j++;
 	}
 	new[i] = '\0';
+	if (s1)
+		free((void *)s1);
+	if (s2)
+		free((void *)s2);
 	return (new);
 }

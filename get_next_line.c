@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
+/*
 int		check_if(char *str)
 {
 	int i;
@@ -46,7 +46,8 @@ static char *line_cat(char *new, int fd)
 	free(buffer);
 	return (new);
 }
-
+*/
+/*
 int		get_next_line(int fd, char **line)
 {
 	static char	*new;
@@ -64,7 +65,7 @@ int		get_next_line(int fd, char **line)
 	}
 	i = 0;
 
-	while (ft_strlen(new) > 0)
+	while (1)
 	{
 		//printf("len new	:	%lu\n", ft_strlen(new));
 		if (new[i] == '\n')
@@ -75,16 +76,67 @@ int		get_next_line(int fd, char **line)
 			//printf("new	:	%s\n", new);
 			return (1);
 		}
-		if (new[i] == '\0' && ft_strlen(new) > 1)
+		else if (new[i] == '\0')
 		{
 			new = line_cat(new, fd);
 			i--;
 		}
 		i++;
 	}
-	printf("new	:	%s\n", new);
+	//printf("new	:	%s\n", new);
 	free(new);
 	return (0);
+}
+*/
+
+int		get_next_line(int fd, char **line)
+{
+	static char	*save;
+	char		*buffer;
+	int			i;
+	int			ret;
+
+	i = 0;
+	if (fd == -1)
+		return (-1);
+	if (!save)
+	{
+		if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+			return (-1);
+		if ((ret = read(fd, buffer, BUFFER_SIZE)) == 0)
+		{
+			*line = ft_strdup(save);
+			return (0);
+		}
+		buffer[ret] = '\0';
+		save = ft_strdup(buffer);
+		//free(buffer);
+	}
+	while (1)
+	{
+		if (save[i] == '\n')
+		{
+			save[i] = '\0';
+			*line = ft_strdup(save);
+			save = ft_strdup(&save[i + 1]);
+			return (1);
+		}
+		else if (save[i] == '\0')
+		{
+			if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+				return (-1);
+			if ((ret = read(fd, buffer, BUFFER_SIZE)) == 0)
+			{
+				*line = ft_strdup(save);
+				return (0);
+			}
+			buffer[ret] = '\0';
+			save = ft_strjoin(save, buffer);
+			//free(buffer);
+			i--;
+		}
+		i++;
+	}
 }
 
 int		main(void)

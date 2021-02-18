@@ -28,6 +28,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c779f0e9-7c86-4a50-af52-5c0cfaf74b29" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/test.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/a.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/a.out.dSYM/Contents/Resources/DWARF/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/a.out.dSYM/Contents/Resources/DWARF/a.out" afterDir="false" />
@@ -87,7 +88,8 @@
       <workItem from="1613397794490" duration="6118000" />
       <workItem from="1613483191242" duration="5406000" />
       <workItem from="1613561860472" duration="3075000" />
-      <workItem from="1613569709934" duration="3576000" />
+      <workItem from="1613569709934" duration="3747000" />
+      <workItem from="1613639789750" duration="3600000" />
     </task>
     <servers />
   </component>
@@ -116,9 +118,13 @@
     </state>
     <state x="201" y="509" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1440@0.0.2560.1440" timestamp="1613397470560" />
     <state x="201" y="524" key="#com.intellij.fileTypes.FileTypeChooser/0.23.2560.1417@0.23.2560.1417" timestamp="1612789721454" />
-    <state x="218" y="341" width="838" height="1032" key="search.everywhere.popup" timestamp="1613401089244">
+    <state x="1375" y="23" width="1185" height="1417" key="dock-window-1" timestamp="1613644047933">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state x="218" y="341" width="838" height="1032" key="search.everywhere.popup/0.23.2560.1417@0.23.2560.1417" timestamp="1613401089244" />
+    <state x="1375" y="23" width="1185" height="1417" key="dock-window-1/0.23.2560.1417@0.23.2560.1417" timestamp="1613644047933" />
+    <state x="218" y="341" width="838" height="1032" key="search.everywhere.popup" timestamp="1613645065946">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="218" y="341" width="838" height="1032" key="search.everywhere.popup/0.23.2560.1417@0.23.2560.1417" timestamp="1613645065946" />
   </component>
 </project>
