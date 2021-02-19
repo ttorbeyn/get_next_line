@@ -38,10 +38,8 @@ char	*ft_strdup(const char *s1)
 		i++;
 	}
 	new[i] = '\0';
-	//free((void *)s1);
 	return (new);
 }
-
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -61,13 +59,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	j = 0;
 	while (s2[j])
-	{
-		new[i] = s2[j];
-		i++;
-		j++;
-	}
+		new[i++] = s2[j++];
 	new[i] = '\0';
-	//free((void *)s1);
-	//free((void *)s2);
 	return (new);
 }

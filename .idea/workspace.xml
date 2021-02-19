@@ -30,6 +30,7 @@
     <list default="true" id="c779f0e9-7c86-4a50-af52-5c0cfaf74b29" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/a.out.dSYM/Contents/Resources/DWARF/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/a.out.dSYM/Contents/Resources/DWARF/a.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/get_next_line.c" beforeDir="false" afterPath="$PROJECT_DIR$/get_next_line.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/get_next_line_utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/get_next_line_utils.c" afterDir="false" />
     </list>
@@ -67,9 +68,9 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -95,7 +96,8 @@
       <workItem from="1613561860472" duration="3075000" />
       <workItem from="1613569709934" duration="3747000" />
       <workItem from="1613639789750" duration="3600000" />
-      <workItem from="1613649756870" duration="3333000" />
+      <workItem from="1613649756870" duration="3754000" />
+      <workItem from="1613729374892" duration="6694000" />
     </task>
     <servers />
   </component>
@@ -128,9 +130,9 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1375" y="23" width="1185" height="1417" key="dock-window-1/0.23.2560.1417@0.23.2560.1417" timestamp="1613651105328" />
-    <state x="218" y="341" width="838" height="1032" key="search.everywhere.popup" timestamp="1613645065946">
+    <state x="218" y="341" width="838" height="1032" key="search.everywhere.popup" timestamp="1613731000417">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state x="218" y="341" width="838" height="1032" key="search.everywhere.popup/0.23.2560.1417@0.23.2560.1417" timestamp="1613645065946" />
+    <state x="218" y="341" width="838" height="1032" key="search.everywhere.popup/0.23.2560.1417@0.23.2560.1417" timestamp="1613731000417" />
   </component>
 </project>
