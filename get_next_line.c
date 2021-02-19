@@ -16,7 +16,10 @@ static int	save_buffer(int fd, char *buffer, char *save, char **line)
 {
 	int		ret;
 
-	if ((ret = read(fd, buffer, BUFFER_SIZE)) == 0)
+	ret = read(fd, buffer, BUFFER_SIZE);
+	if (ret == -1)
+		return (-1);
+	if (ret == 0)
 	{
 		*line = ft_strdup(save);
 		return (0);
@@ -31,12 +34,12 @@ int			get_next_line(int fd, char **line)
 	char		*buffer;
 	int			i;
 
-	i = 0;
-	if (fd < -1 || BUFFER_SIZE <= 0 || !line ||
+	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE < 1 || !line ||
 			!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
 	if (!save)
-		save = ft_strdup("\0");
+		save = ft_strdup("");
+	i = 0;
 	while (1)
 	{
 		if (save[i] == '\n')
@@ -46,9 +49,8 @@ int			get_next_line(int fd, char **line)
 			save = ft_strdup(&save[i + 1]);
 			return (1);
 		}
-		else if (save[i] == '\0')
+		if (save[i] == '\0')
 		{
-			//printf("save	:	%s\n", save);
 			if (save_buffer(fd, buffer, save, line) == 0)
 				return (0);
 			save = ft_strjoin(save, buffer);
@@ -58,7 +60,7 @@ int			get_next_line(int fd, char **line)
 	}
 	return (0);
 }
-
+/*
 int			main(void)
 {
 	int		fd;
@@ -76,7 +78,7 @@ int			main(void)
 	}
 	return (0);
 }
-
+*/
 /*
 int			get_next_line(int fd, char **line)
 {
