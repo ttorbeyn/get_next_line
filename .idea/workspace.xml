@@ -28,11 +28,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c779f0e9-7c86-4a50-af52-5c0cfaf74b29" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/get_next_line_bonus.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/get_next_line_bonus.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/get_next_line_utils_bonus.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/a.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a.out.dSYM/Contents/Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a.out.dSYM/Contents/Resources/DWARF/a.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alphabet" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/get_next_line.c" beforeDir="false" afterPath="$PROJECT_DIR$/get_next_line.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_next_line_bonus.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_next_line_bonus.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_next_line_utils_bonus.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ressources/fr.subject.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,21 +66,23 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/gnl-test" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/cloud" />
+      <recent name="$PROJECT_DIR$/gnl-test" />
       <recent name="$PROJECT_DIR$/ressources" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -102,7 +111,8 @@
       <workItem from="1613649756870" duration="3754000" />
       <workItem from="1613729374892" duration="9436000" />
       <workItem from="1613987002302" duration="2803000" />
-      <workItem from="1614000665678" duration="607000" />
+      <workItem from="1614000665678" duration="6562000" />
+      <workItem from="1614013266056" duration="3521000" />
     </task>
     <servers />
   </component>
@@ -131,6 +141,10 @@
     </state>
     <state x="201" y="509" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1440@0.0.2560.1440" timestamp="1613397470560" />
     <state x="201" y="524" key="#com.intellij.fileTypes.FileTypeChooser/0.23.2560.1417@0.23.2560.1417" timestamp="1612789721454" />
+    <state x="1153" y="252" key="SettingsEditor" timestamp="1614014902705">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="1153" y="252" key="SettingsEditor/0.23.2560.1417@0.23.2560.1417" timestamp="1614014902705" />
     <state x="1375" y="23" width="1185" height="1417" key="dock-window-1" timestamp="1613651105328">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>

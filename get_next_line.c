@@ -27,27 +27,17 @@ static int	save_buffer(int fd, char *buffer, char *save, char **line)
 	buffer[ret] = '\0';
 	return (1);
 }
-/*
-static int	return_one(char *save, char **line, int i)
-{
-	char	*tmp;
 
-	tmp = ft_strdup(save);
-	save[i] = '\0';
-	*line = ft_strdup(save);
-	save = ft_strdup(&save[i + 1]);
-	return (1);
-}
-*/
 int			get_next_line(int fd, char **line)
 {
 	static char	*save;
-	char		*buffer;
 	int			i;
+	char 		*buffer;
+	int 		ret;
+	char		*tmp1;
+	char		*tmp2;
 
 	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE < 1 || !line)
-		return (-1);
-	if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
 	if (!save)
 		save = ft_strdup("");
@@ -57,15 +47,30 @@ int			get_next_line(int fd, char **line)
 		if (save[i] == '\n')
 		{
 			save[i] = '\0';
+			tmp1 = save;
 			*line = ft_strdup(save);
+
 			save = ft_strdup(&save[i + 1]);
+			free(tmp1);
+			tmp1 = NULL;
 			return (1);
 		}
 		if (save[i] == '\0')
 		{
-			if (save_buffer(fd, buffer, save, line) == 0)
+			if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+				return (-1);
+			ret = save_buffer(fd, buffer, save, line);
+			if (ret == 0)
+			{
+				if (i > 0)
+					free(save);
 				return (0);
+			}
+			if (ret == -1)
+				return (-1);
 			save = ft_strjoin(save, buffer);
+			free(buffer);
+			tmp2 = NULL;
 			i--;
 		}
 		i++;
@@ -73,21 +78,80 @@ int			get_next_line(int fd, char **line)
 	return (0);
 }
 /*
+int main()
+{
+	int             fd;
+	int             i;
+	int             j;
+	char    		*line = 0;
+
+	j = 1;
+	if (!(fd = open("files/41_char", O_RDONLY)))
+	{
+		printf("\nError in open\n");
+		return (0);
+	}
+	while ((i = get_next_line(fd, &line)) > 0)
+	{
+		printf("|%s\n", line);
+		free(line);
+		j++;
+	}
+	printf("|%s\n", line);
+	free(line);
+	close(fd);
+	if (!(fd = open("files/42_char", O_RDONLY)))
+	{
+		printf("\nError in open\n");
+		return (0);
+	}
+	while ((i = get_next_line(fd, &line)) > 0)
+	{
+		printf("|%s\n", line);
+		free(line);
+		j++;
+	}
+	printf("|%s\n", line);
+	free(line);
+	close(fd);
+	if (!(fd = open("files/43_char", O_RDONLY)))
+	{
+		printf("\nError in open\n");
+		return (0);
+	}
+	while ((i = get_next_line(fd, &line)) > 0)
+	{
+		printf("|%s\n", line);
+		free(line);
+		j++;
+	}
+	printf("|%s\n", line);
+	free(line);
+	close(fd);
+
+	if (i == -1)
+		printf ("\nError in Fonction - Returned -1\n");
+	else if (j == 1)
+		printf("\nRight number of lines\n");
+	else if (j != 1)
+		printf("\nNot Good - Wrong Number Of Lines\n");
+}
+*/
+/*
 int			main(void)
 {
-	int		fd;
-	int		ret;
-	char	*line;
+	int fd;
+	int ret;
+	char *line;
 
 	fd = open("alphabet", O_RDONLY);
 	while (1)
 	{
-		ret = get_next_line(-5, &line);
+		ret = get_next_line(fd, &line);
 		printf("%d -- |%s|\n", ret, line);
-		break;
 		free(line);
 		if (ret == 0)
-			break ;
+			break;
 	}
 	return (0);
 }
