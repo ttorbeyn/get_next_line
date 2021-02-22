@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static int	save_buffer(int fd, char *buffer, char *save, char **line)
 {
@@ -43,7 +43,7 @@ int			get_next_line(int fd, char **line)
 {
 	static char	*save;
 	char		*buffer;
-	int			i;
+	long		i;
 
 	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE < 1 || !line)
 		return (-1);
