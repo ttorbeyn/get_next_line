@@ -12,37 +12,49 @@
 
 #include "get_next_line.h"
 
-static int	save_buffer(int fd, char *buffer, char *save, char **line)
+static int	ft_free(char *save, char *buffer, int a, int b)
 {
-	int	ret;
-	char *tmp;
+	if (a && save)
+		free(save);
+	if (b && buffer)
+		free(buffer);
+	return (1);
+}
 
+static int	ft_save(int fd, char **save, char **line, int i)
+{
+	int		ret;
+	char	*tmp;
+	char	*buffer;
+
+	if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+		return (ft_free(*save, buffer, 1, 1) - 2);
 	ret = read(fd, buffer, BUFFER_SIZE);
 	if (ret == -1)
-		return (-1);
+		return (ft_free(*save, buffer, 0, 1) - 2);
 	if (ret == 0)
 	{
-		tmp = buffer;
-		*line = ft_strdup(save);
-		free(tmp);
-		tmp = NULL;
+		tmp = *save;
+		*line = ft_strdup(*save);
+		if (i)
+			ft_free(tmp, buffer, 1, 1);
 		return (0);
 	}
 	buffer[ret] = '\0';
-	return (1);
+	tmp = *save;
+	*save = ft_strjoin(*save, buffer);
+	ft_free(tmp, buffer, 1, 1);
+	return (ret);
 }
 
 int			get_next_line(int fd, char **line)
 {
 	static char	*save;
 	int			i;
-	char 		*buffer;
-	int 		ret;
-	char *tmp;
+	int			ret;
+	char		*tmp;
 
 	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE < 1 || !line)
-		return (-1);
-	if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
 	if (!save)
 		save = ft_strdup("");
@@ -54,25 +66,14 @@ int			get_next_line(int fd, char **line)
 			save[i] = '\0';
 			tmp = save;
 			*line = ft_strdup(save);
-
-			save = ft_strdup(&save[i + 1]);
 			free(tmp);
-			tmp = NULL;
-			free(buffer);
+			save = ft_strdup(&save[i + 1]);
 			return (1);
 		}
 		if (save[i] == '\0')
 		{
-			ret = save_buffer(fd, buffer, save, line);
-			if (ret == 0)
-			{
-				if (i > 0)
-					free(save);
-				return (0);
-			}
-			if (ret == -1)
-				return (-1);
-			save = ft_strjoin(save, buffer);
+			if ((ret = ft_save(fd, &save, line, i)) == -1 || ret == 0)
+				return (ret);
 			i--;
 		}
 		i++;
@@ -147,7 +148,6 @@ int			get_next_line(int fd, char **line)
 	char		*buffer;
 	int			i;
 	int			ret;
-
 
 	i = 0;
 	if (fd <= -1 || BUFFER_SIZE <= 0 || !line ||
