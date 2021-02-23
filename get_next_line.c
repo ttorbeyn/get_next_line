@@ -14,14 +14,18 @@
 
 static int	save_buffer(int fd, char *buffer, char *save, char **line)
 {
-	int		ret;
+	int	ret;
+	char *tmp;
 
 	ret = read(fd, buffer, BUFFER_SIZE);
 	if (ret == -1)
 		return (-1);
 	if (ret == 0)
 	{
+		tmp = buffer;
 		*line = ft_strdup(save);
+		free(tmp);
+		tmp = NULL;
 		return (0);
 	}
 	buffer[ret] = '\0';
@@ -34,10 +38,11 @@ int			get_next_line(int fd, char **line)
 	int			i;
 	char 		*buffer;
 	int 		ret;
-	char		*tmp1;
-	char		*tmp2;
+	char *tmp;
 
 	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE < 1 || !line)
+		return (-1);
+	if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
 	if (!save)
 		save = ft_strdup("");
@@ -47,18 +52,17 @@ int			get_next_line(int fd, char **line)
 		if (save[i] == '\n')
 		{
 			save[i] = '\0';
-			tmp1 = save;
+			tmp = save;
 			*line = ft_strdup(save);
 
 			save = ft_strdup(&save[i + 1]);
-			free(tmp1);
-			tmp1 = NULL;
+			free(tmp);
+			tmp = NULL;
+			free(buffer);
 			return (1);
 		}
 		if (save[i] == '\0')
 		{
-			if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
-				return (-1);
 			ret = save_buffer(fd, buffer, save, line);
 			if (ret == 0)
 			{
@@ -69,8 +73,6 @@ int			get_next_line(int fd, char **line)
 			if (ret == -1)
 				return (-1);
 			save = ft_strjoin(save, buffer);
-			free(buffer);
-			tmp2 = NULL;
 			i--;
 		}
 		i++;
@@ -137,25 +139,7 @@ int main()
 		printf("\nNot Good - Wrong Number Of Lines\n");
 }
 */
-/*
-int			main(void)
-{
-	int fd;
-	int ret;
-	char *line;
 
-	fd = open("alphabet", O_RDONLY);
-	while (1)
-	{
-		ret = get_next_line(fd, &line);
-		printf("%d -- |%s|\n", ret, line);
-		free(line);
-		if (ret == 0)
-			break;
-	}
-	return (0);
-}
-*/
 /*
 int			get_next_line(int fd, char **line)
 {
