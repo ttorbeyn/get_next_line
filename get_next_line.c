@@ -43,16 +43,50 @@ static int	ft_save(int fd, char **save, char **line, int i)
 	buffer[ret] = '\0';
 	tmp = *save;
 	*save = ft_strjoin(*save, buffer);
-	ft_free(tmp, buffer, 1, 1);
+	ft_free(tmp, buffer, 1, 0);
 	return (ret);
 }
+/*
+static int	ft_strdup_modified(char **line, char **save)
+{
+	size_t	len;
+	size_t	i;
+	size_t	j;
+	char	*tmp;
 
+	i = 0;
+	tmp = *save;
+	len = ft_strlen(*save);
+	if (!(*line = malloc(sizeof(char) * (len + 1))))
+		return (-1);
+	while (*save[i])
+	{
+		*line[i] = *save[i];
+		i++;
+	}
+	*line[i] = '\0';
+	free(*save);
+	i++;
+	len = ft_strlen(&tmp[i]);
+	if (!(*save = malloc(sizeof(char) * (len + 1))))
+		return (-1);
+	j = 0;
+	while (tmp[i])
+	{
+		*save[j] = tmp[i];
+		i++;
+		j++;
+	}
+	*save[i] = '\0';
+	free(tmp);
+	return (1);
+}
+*/
 int			get_next_line(int fd, char **line)
 {
 	static char	*save;
 	int			i;
 	int			ret;
-	char		*tmp;
 
 	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE < 1 || !line)
 		return (-1);
@@ -64,11 +98,13 @@ int			get_next_line(int fd, char **line)
 		if (save[i] == '\n')
 		{
 			save[i] = '\0';
-			tmp = save;
+			
 			*line = ft_strdup(save);
-			free(tmp);
+			free(save);
 			save = ft_strdup(&save[i + 1]);
 			return (1);
+			/*
+			return (ft_strdup_modified(line, &save));*/
 		}
 		if (save[i] == '\0')
 		{
