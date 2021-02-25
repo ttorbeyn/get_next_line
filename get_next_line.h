@@ -17,17 +17,12 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
-
-
 # include <sys/stat.h>
 # include <fcntl.h>
 
-size_t	ft_strlen(const char *s);
-char	*ft_strdup(const char *s1);
-char	*ft_strjoin(char const *s1, char const *s2);
-void	*ft_memcpy(void *dst, const void *src, size_t n);
-char	*ft_strndup(const char *s1, int n);
-int		get_next_line(int fd, char **line);
+size_t		ft_strlen(char *s);
+char		*ft_strdup(char *s1);
+char		*ft_strjoin(char *s1, char *s2);
+int			get_next_line(int fd, char **line);
 
 #endif
-
