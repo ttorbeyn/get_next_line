@@ -31,8 +31,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/a.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/get_next_line.c" beforeDir="false" afterPath="$PROJECT_DIR$/get_next_line.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/get_next_line.h" beforeDir="false" afterPath="$PROJECT_DIR$/get_next_line.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/get_next_line_utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/get_next_line_utils.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +42,7 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/42TESTERS-GNL" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1nQnfMeBtZDJP8as20cVhZU3qEN" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -73,6 +71,13 @@
       <recent name="$PROJECT_DIR$/cloud" />
       <recent name="$PROJECT_DIR$/gnl-test" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -103,7 +108,7 @@
       <workItem from="1614013266056" duration="3740000" />
       <workItem from="1614074453583" duration="4198000" />
       <workItem from="1614082407501" duration="6392000" />
-      <workItem from="1614247946298" duration="9068000" />
+      <workItem from="1614247946298" duration="11037000" />
     </task>
     <servers />
   </component>
@@ -140,9 +145,9 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="938" y="23" width="1622" height="1227" key="dock-window-1/0.23.2560.1417@0.23.2560.1417" timestamp="1614257942721" />
-    <state x="218" y="341" width="838" height="1032" key="search.everywhere.popup" timestamp="1614257420292">
+    <state x="218" y="341" width="838" height="1032" key="search.everywhere.popup" timestamp="1614259275133">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state x="218" y="341" width="838" height="1032" key="search.everywhere.popup/0.23.2560.1417@0.23.2560.1417" timestamp="1614257420292" />
+    <state x="218" y="341" width="838" height="1032" key="search.everywhere.popup/0.23.2560.1417@0.23.2560.1417" timestamp="1614259275133" />
   </component>
 </project>

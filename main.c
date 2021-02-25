@@ -15,8 +15,6 @@ int		main(void)
 		if (ret == 0)
 			break ;
 	}
-	get_next_line(fd, &line);
-	printf("%d -- |%s|\n", ret, line);
 	return (0);
 }
 
