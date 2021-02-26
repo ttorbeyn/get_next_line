@@ -6,11 +6,11 @@
 /*   By: ttorbeyn <ttorbeyn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 16:00:41 by ttorbeyn          #+#    #+#             */
-/*   Updated: 2021/01/19 16:00:43 by ttorbeyn         ###   ########.fr       */
+/*   Updated: 2021/02/26 14:19:49 by ttorbeyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(char *s)
 {

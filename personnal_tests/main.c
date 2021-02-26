@@ -9,7 +9,7 @@ int		main(void)
 	fd = open("alphabet", O_RDONLY);
 	while (1)
 	{
-		ret = get_next_line(fd, &line);
+		ret = get_next_line(1, &line);
 		printf("%d -- |%s|\n", ret, line);
 		free(line);
 		if (ret == 0)
